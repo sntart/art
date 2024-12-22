@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="transparent">
+    <title>Isaac Santillan</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,700,0,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Pragati Narrow", sans-serif;
+            background-color: #d7d0b5; /* Change this to your desired background color */
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #ffffff00;
+            padding: 10px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 15px auto; /* Adjust the margin to center the container vertically */
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
+            position: relative; /* Required for absolute positioning of logo overlay */
+        }
+
+
+        .permanent-description {
+            position: relative;
+            background-color: #f0141400;
+            padding: 0px;
+            margin-top: 25px;
+            margin-bottom: 0px; /* Adjust as needed */
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 11px;
+            color: #414141;
+            text-align: center;
+            z-index: 2; /* Ensure it's above the carousel */
+        }
+
+
+        .portfolio-images img {
+            width: 350px; /* Set the width of portfolio images */
+            margin: 0 0px; /* Add space between images */
+            border-radius: 0px; /* Optional: Add border radius for rounded corners */
+            transition: transform 0.4s ease; /* Smooth transition on hover */
+        }
+
+        .no-right-click,
+        .no-right-click img {
+            pointer-events: none; /* Disable pointer events on the element and its children */
+        }
+        .no-drag {
+            user-select: none; /* Disable text selection */
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #d7d0b5;
+            color: #464646;
+            font-family: "Montserrat", sans-serif;
+            font-size: 10px;
+            font-weight: 300;
+            padding: 0px;
+            z-index: 2; /* Set a lower z-index value for the footer */
+        }
+
+/* Carousel styles */
+        .carousel-container {
+            width: 500px; /* Fixed width */
+            height: 700px; /* Fixed height */
+            overflow: hidden;
+            border: 1px solid #f10c0c00;
+            background-color: #e8666600;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            position: relative; /* Required for absolute positioning of buttons */
+            margin: 0 auto; /* Add this line to center the container horizontally */
+            margin-top: -15px;
+            touch-action: pan-y; /* Enable vertical swipe on touch devices */
+            z-index: 2;
+        }
+
+
+        @media (max-width: 768px) {
+    /* Adjust dimensions for tablets */
+    .carousel-container {
+        width: 80vw; /* 80% of the viewport width */
+        height: calc(80vw * 5 / 4); /* Maintain 4:5 aspect ratio */
+    }
+}
+
+        @media (max-width: 480px) {
+    /* Adjust dimensions for mobile devices */
+    .carousel-container {
+        width: 90vw; /* 90% of the viewport width */
+        height: calc(90vw * 5 / 4); /* Maintain 4:5 aspect ratio */
+    }
+}
+        .carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: pan-x; /* Enable horizontal swipe on touch devices */
+            -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+        }
+
+        .carousel img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            opacity: 0; /* Initially hide images */
+            transition: transform 0.5s ease; /* Scale-up transition */
+            transform: scale(0.9); /* Initial scale-down effect */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0.9); /* Center and scale-down effect */
+        }
+
+        .carousel img.active {
+            opacity: 1; /* Show active image */
+            transform: scale(1.1); /* Scale-up effect */
+            transform: translate(-50%, -50%) scale(1); /* Center and scale-up effect */
+
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            height: 600px; /*button lenght*/
+            transform: translateY(-50%);
+            font-size: 25px;
+            color: #ffffffce;
+            background-color: transparent !important;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            padding: 90px;
+            z-index: 1;
+            user-select: none; /* Disable text(arrow) selection */
+            line-height: 600px; /* Same as button height */
+            vertical-align: middle; /* Vertical alignment */
+        }
+
+        .prev-btn {
+            left: 0px;
+            padding-left: 10px; /* Adjust left padding for the arrow */
+
+        }
+
+        .next-btn {
+            right: 0px;
+            padding-right: 10px; /* Adjust right padding for the arrow */
+        }
+
+        .progress-indicator {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #ffffff00;
+            color: #959595; /* Text color */
+            padding: .5%;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        /* Navigation menu styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: #464646;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            transition: color 0.5s ease;
+        }
+
+        nav a:hover {
+            color: #989898;
+        }
+
+
+        /* SVG icon styles */
+        .icon {
+            fill: #909090;
+            transition: fill 0.5s ease;
+        }
+
+        .icon:hover {
+            fill: #ffffff;
+        }
+
+        /* Image Descriptions styles */
+        .image-descriptions {
+            margin-top: 0px; /* Adjust spacing from carousel */
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .description {
+            background-color: #cfd1d2;
+            color: #414141; /* Text color */
+            padding: 1px 10px;
+            font-family: "Noto Sans JP", sans-serif;
+            font-weight: 200;
+            font-size: 11px;
+            display: inline-block;
+            margin: 0 5px; /* Adjust spacing between descriptions */
+            border-radius: 5px;
+        }
+
+
+        body::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, and Opera */
+}
+
+</style>
+</head>
+<body>
+    <header class="header">
+        <nav class="menu">
+          <a href="contact.html">contact</a>
+        </nav>
+    </header>
+
+    <!-- Permanent description -->
+    <div class="permanent-description">
+        <p></p>
+    </div>
+
+    <div class="container">
+        <!-- Overlay div to disable interactions -->
+        <!--<div class="logo-overlay"></div>-->
+        <!-- Logo image -->
+        <!--<img class="logo" src="#" alt="Logo">-->
+    </div>
+
+    <!-- Progress indicator -->
+    <!-- <div class="progress-indicator" id="progressIndicator"></div> -->
+
+
+    <!-- Image Carousel -->
+    <div class="carousel-container">
+        <div class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</div>
+        <div class="carousel" id="imageCarousel">
+            <img src="images/image1.jpg" class="no-right-click no-drag active">
+            <img src="images/image2.jpg" class="no-right-click no-drag">
+            <img src="images/image3.jpg" class="no-right-click no-drag">
+            <img src="images/image4.jpg" class="no-right-click no-drag">
+            <img src="images/image5.jpg" class="no-right-click no-drag">
+            <img src="images/image6.jpg" class="no-right-click no-drag">
+            <!-- Add more carousel images as needed -->
+        </div>
+    <div class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</div>
+    </div>
+
+    <nav>
+        <a href="#"></a>
+    </nav>
+
+
+    
+    <!-- JavaScript to disable right-clicking and dragging -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel img');
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+            updateProgressIndicator();
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+            updateProgressIndicator();
+        }
+    
+        // Handle touch events for swipe gesture
+        document.getElementById('imageCarousel').addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].clientX;
+        });
+
+        document.getElementById('imageCarousel').addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        // Handle swipe gesture
+        function handleSwipe() {
+            const touchDiff = touchEndX - touchStartX;
+            if (touchDiff > 50) {
+                prevSlide(); // Swipe right
+            } else if (touchDiff < -50) {
+                nextSlide(); // Swipe left
+            }
+        }
+        
+        //keyboard arrows
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (event.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+       
+// Update image descriptions
+function updateImageDescription() {
+    const descriptions = document.querySelectorAll('.description');
+    const currentSlide = slideIndex; // Get current slide index (starting from 0)
+    
+// Hide all descriptions
+    descriptions.forEach(desc => {
+        desc.style.display = 'none';
+    });
+
+// Show the description corresponding to the current slide
+    descriptions[currentSlide].style.display = 'block';
+}
+
+// Update progress indicator
+function updateProgressIndicator() {
+    const slides = document.querySelectorAll('.carousel img');
+    const progressIndicator = document.getElementById('progressIndicator');
+    const currentSlide = slideIndex + 1; // Get current slide number
+    progressIndicator.textContent = `${currentSlide}/${slides.length}`; // Update progress text
+    updateImageDescription(); // Update image description
+}
+
+// Show initial slide, update progress indicator, and image description
+
+updateProgressIndicator();
+updateImageDescription(); // Add this line to hide other descriptions initially
+      
+    </script>
+    
+    <footer>
+        <p>&copy; 2024 Isaac Santillan</p>
+    </footer>
+
+</body>
+</html>
