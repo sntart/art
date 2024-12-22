@@ -1,4 +1,3 @@
-# Art Portfolio
 
 © 2024 Isaac Santillan
 
