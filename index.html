@@ -156,8 +156,9 @@
             top: 50%;
             height: 600px; /*button lenght*/
             transform: translateY(-50%);
-            font-size: 25px;
-            color: #ffffffce;
+            font-size: 23px;
+            font-weight: 800;
+            color: #ff5c00;
             background-color: transparent !important;
             border: none;
             border-radius: 6px;
@@ -169,17 +170,19 @@
             vertical-align: middle; /* Vertical alignment */
         }
 
+
         .prev-btn {
             left: 0px;
             padding-left: 10px; /* Adjust left padding for the arrow */
-
         }
+
 
         .next-btn {
             right: 0px;
             padding-right: 10px; /* Adjust right padding for the arrow */
         }
 
+        
         .progress-indicator {
             margin-top: 10px;
             margin-bottom: 10px;
@@ -218,7 +221,7 @@
         }
 
         nav a:hover {
-            color: #989898;
+            color: #ff5c00;
         }
 
 
@@ -229,7 +232,7 @@
         }
 
         .icon:hover {
-            fill: #ffffff;
+            fill: #ff5c00;
         }
 
         /* Image Descriptions styles */
@@ -260,6 +263,7 @@
 </head>
 <body>
     <header class="header">
+        <!-- <img src="images/favicon.png" style="width: 27px;"class="no-right-click no-drag"> -->
         <nav class="menu">
           <a href="contact.html">contact</a>
         </nav>
@@ -297,15 +301,15 @@
             <img src="images/image8.jpg" class="no-right-click no-drag">
             <img src="images/image9.jpg" class="no-right-click no-drag">
             <img src="images/image10.jpg" class="no-right-click no-drag">
-            -->        
+            -->
         </div>
     <div class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</div>
     </div>
 
-    <nav>
-        <a href="#"></a>
-    </nav>
-
+    <!-- Permanent description -->
+    <div class="permanent-description">
+        <p></p>
+    </div>
 
     
     <!-- JavaScript to disable right-clicking and dragging -->
