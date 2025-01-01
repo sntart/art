@@ -23,10 +23,62 @@
             min-height: 100vh;
         }
 
-        .header {
-            background-color: #ffffff00;
-            padding: 10px 20px;
-        }
+
+
+    /* Style for dropdown menu */
+    .dropdown {
+        position: relative;
+        color: #1f1b1c;
+        font-size: 17px;
+        font-weight: 600;
+        padding-top: 30px;
+        cursor: pointer;
+        display:inline-block;
+    }
+
+    .dropdown:hover{
+        color: #ff5c00;
+    }
+
+    .dropdown.active{
+        color: #ff5c00;
+    }
+
+    .dropdown-content {
+        display: none;
+            position: absolute;
+            background-color: #d7d0b5;
+            min-width: 200px;
+            z-index: 3;
+            border-color: #1f1b1c;
+            border-width: 1px;
+            border-radius: 4px;
+            border-style:solid;
+            left: 50%;
+            transform: translateX(-50%);
+    }
+
+    .dropdown.active .dropdown-content {
+        display:grid;
+    }
+
+    .dropdown-content a {
+        color: #1f1b1c;
+        font-size: 17px;
+        font-weight: 700;
+        padding: 18px 35px;
+        text-decoration: none;
+        display: grid;
+        font-weight: 400;
+        border-radius: 4px;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #1f1b1c;
+        color: #d7d0b5;
+        transition: color 0.3s;        
+    }
+
 
         .container {
             max-width: 600px;
@@ -47,7 +99,7 @@
             font-family: "Montserrat", sans-serif;
             font-weight: 400;
             font-size: 11px;
-            color: #414141;
+            color: #1f1b1c;
             text-align: center;
             z-index: 2; /* Ensure it's above the carousel */
         }
@@ -261,12 +313,23 @@
 </style>
 </head>
 <body>
-    <header class="header">
-        <!-- <img src="images/favicon.png" style="width: 27px;"class="no-right-click no-drag"> -->
-        <nav class="menu">
-          <a href="contact.html">contact</a>
-        </nav>
-    </header>
+
+    <div class="dropdown">
+        <div class="arrow-down"></div>
+        <span onclick="toggleDropdown(this)"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-justify"><path d="M3 12h18"/><path d="M3 18h18"/><path d="M3 6h18"/></svg></span>
+        <div class="dropdown-content">
+            <a href="mailto:mail@isaacsart.com" style="display: inline-flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zm-2 0l-8 5l-8-5zm0 12H4V8l8 5l8-5z" />
+            </svg> ‎ Email</a>
+            <a href="https://www.instagram.com/santillan_i" target="_blank" style="display: inline-flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+            </svg> ‎ Instagram</a>
+
+            <a href="https://linktr.ee/isaacsart" target="_blank" style="display: inline-flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
+                <path fill="currentColor" d="M140 164v68a12 12 0 0 1-24 0v-68a12 12 0 0 1 24 0m68-72h-51l35.52-35.51a12 12 0 0 0-17-17L140 75V24a12 12 0 0 0-24 0v51L80.49 39.51a12 12 0 0 0-17 17L99 92H48a12 12 0 0 0 0 24h51l-35.49 35.51a12 12 0 0 0 17 17L128 121l47.51 47.52a12 12 0 0 0 17-17L157 116h51a12 12 0 0 0 0-24" />
+            </svg> ‎ Linktree</a>
+        </div>
+    </div>
 
     <!-- Permanent description -->
     <div class="permanent-description">
@@ -391,11 +454,29 @@ function updateProgressIndicator() {
 
 updateProgressIndicator();
 updateImageDescription(); // Add this line to hide other descriptions initially
-      
+
+
     </script>
     
+    <script>
+        function toggleDropdown(element) {
+            var dropdown = element.parentElement;
+            dropdown.classList.toggle('active');
+        }
+    
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            var dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(function(dropdown) {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
     <footer>
-        <p>&copy; 2024 Isaac Santillan</p>
+        <p>&copy; 2025 Isaac Santillan</p>
     </footer>
 
 </body>
