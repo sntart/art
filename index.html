@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="transparent">
-    <title>Isaac Santillan</title>
+    <title>IsaacSArt</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -27,57 +27,67 @@
 
     /* Style for dropdown menu */
     .dropdown {
-        position: relative;
-        color: #1f1b1c;
-        font-size: 17px;
-        font-weight: 600;
-        padding-top: 30px;
-        cursor: pointer;
-        display:inline-block;
-    }
+    position: relative;
+    color: #1f1b1c;
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 6px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.1s ease; /* Add transition for hover effects */
+}
 
-    .dropdown:hover{
-        color: #ff5c00;
-    }
+.dropdown:hover {
+    color: #ff5c00;
+    width: 50px;
+    border-radius: 2px;
+}
 
-    .dropdown.active{
-        color: #1f1b1c;
-    }
+.dropdown.active {
+    color: #d7d0b5;
+    background-color: #8d8778;
+    border-radius: 2px;
+    width: 50px;
+}
 
-    .dropdown-content {
-        display: none;
-            position: absolute;
-            background-color: #d7d0b5;
-            min-width: 280px;
-            z-index: 3;
-            border-color: #1f1b1c;
-            border-width: 1px;
-            border-radius: 4px;
-            border-style:solid;
-            left: 50%;
-            transform: translateX(-50%);
-    }
+.dropdown-content {
+    position: absolute;
+    background-color: #d7d0b5;
+    min-width: 280px;
+    z-index: 3;
+    border-color: #8d8778;
+    border-width: 1px;
+    border-radius: 2px;
+    border-style: solid;
+    left: 50%;
+    opacity: 0; /* Start with 0 opacity */
+    visibility: hidden; /* Hide initially */
+    transform: translateX(-50%) translateY(-10px); /* Combine X and Y transform */
+    transition: opacity 0.3s ease, transform 0.2s ease, visibility 0.3s ease;
+}
 
-    .dropdown.active .dropdown-content {
-        display:grid;
-    }
+.dropdown.active .dropdown-content {
+    display: grid;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Keep X centered, reset Y */
+}
 
-    .dropdown-content a {
-        color: #1f1b1c;
-        font-size: 17px;
-        font-weight: 700;
-        padding: 20px 55px;
-        text-decoration: none;
-        display: grid;
-        font-weight: 400;
-        border-radius: 4px;
-    }
+.dropdown-content a {
+    color: #1f1b1c;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 20px 55px;
+    text-decoration: none;
+    display: grid;
+    border-radius: 2px;
+    transition: all 0.2s ease; /* Add transition for hover effects */
+}
 
-    .dropdown-content a:hover {
-        background-color: #1f1b1c;
-        color: #d7d0b5;
-        transition: color 0.3s;        
-    }
+.dropdown-content a:hover {
+    background-color: #1f1b1c;
+    color: #d7d0b5;
+}
 
 
         .container {
@@ -130,10 +140,10 @@
             left: 0;
             width: 100%;
             background-color: #d7d0b5;
-            color: #464646;
+            color: #847f71;
             font-family: "Montserrat", sans-serif;
             font-size: 10px;
-            font-weight: 300;
+            font-weight: 400;
             padding: 0px;
             z-index: 2; /* Set a lower z-index value for the footer */
         }
@@ -313,9 +323,8 @@
 </style>
 </head>
 <body>
-
+<br>
     <div class="dropdown">
-        <div class="arrow-down"></div>
         <span onclick="toggleDropdown(this)"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-justify"><path d="M3 12h18"/><path d="M3 18h18"/><path d="M3 6h18"/></svg></span>
         <div class="dropdown-content">
             <a href="mailto:mail@isaacsart.com" style="display: inline-flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
