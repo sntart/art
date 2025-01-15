@@ -1,5 +1,5 @@
 
-© 2024 Isaac Santillan
+© 2025 Isaac Santillan
 
 This repository contains original artwork by Isaac Santillan. All rights reserved.
 
