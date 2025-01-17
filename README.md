@@ -6,4 +6,4 @@ This repository contains original artwork by Isaac Santillan. All rights reserve
 ## Usage Rights
 - All artwork displayed on this site is protected by copyright law
 - Images may not be used, reproduced, or modified without explicit written permission
-- For licensing inquiries, please contact: email
+- For licensing inquiries, please contact: mail@isaacsart.com
